@@ -1,5 +1,8 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "fmt": "deno task dprint fmt",
+    "fmt:check": "deno task dprint check",
+    "dprint": "deno run -A npm:dprint",
+    "dev": "deno run --watch mod.ts"
   }
 }

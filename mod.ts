@@ -39,25 +39,11 @@ const unwrap = <T>(result: Result<T>): T =>
  * ```
  */
 export const ifexpr = <T, Arr extends Branches<T>>(
-  args: readonly [...Arr, Result<T>]
+  args: readonly [...Arr, Result<T>],
 ): T => {
   const conds = args.slice(0, -1) as Arr
   const elseVal = args.at(-1) as Result<T>
   const res = conds.find(([cond]) => unwrap(cond))?.[1 /* result */] ?? elseVal
 
   return unwrap(res)
-}
-
-// Learn more at https://deno.land/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  const guard = (a: number | "first") =>
-    ifexpr([
-      [a < 10, () => "this is first"],
-      [a > 1000, "this is bigger than 1000"],
-      [a === 1000, "this is 1000"],
-      "this is smaller than 1000",
-    ])
-  console.log(guard("first"))
-  console.log(guard(11))
-  console.log(guard(9))
 }

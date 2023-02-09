@@ -15,7 +15,7 @@ const calcScore = (score: number) =>
   ])
 
 const scores = [90, 80, 70, 60, 50]
-scores.map(calcScore).join(", ") //=> A, B, C, D, F
+scores.map(calcScore).join(", ") // => A, B, C, D, F
 ```
 
 ## Benchmark
@@ -32,4 +32,5 @@ benchmark      time (avg)             (min … max)       p75       p99      p99
 nativeIf     1.98 µs/iter     (1.63 µs … 2.19 µs)   2.05 µs   2.19 µs   2.19 µs
 exprIf     151.56 µs/iter (118.25 µs … 617.04 µs) 171.76 µs 201.46 µs  214.3 µs
 ```
+
 disregard performance, embrace functional programming!

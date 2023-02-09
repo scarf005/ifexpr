@@ -1,4 +1,4 @@
-import { ifexpr } from "./main.ts"
+import { ifexpr } from "./mod.ts"
 
 Deno.bench(function nativeIf() {
   const guard = (a: number | "first") => {

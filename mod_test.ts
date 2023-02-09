@@ -1,5 +1,5 @@
-import { ifexpr } from "./main.ts"
 import { assertEquals } from "https://deno.land/std@0.168.0/testing/asserts.ts"
+import { ifexpr } from "./mod.ts"
 
 /**
  * function condition -> literal result
@@ -17,11 +17,21 @@ const calcScore = (score: number) =>
   ])
 
 // prettier-ignore
-const scores =  [[0, "F"], [59, "F"], [60, "D"], [69, "D"], [70, "C"], [79, "C"], [80, "B"], [89, "B"], [90, "A"], [100, "A"]] as const
+const scores = [
+  [0, "F"],
+  [59, "F"],
+  [60, "D"],
+  [69, "D"],
+  [70, "C"],
+  [79, "C"],
+  [80, "B"],
+  [89, "B"],
+  [90, "A"],
+  [100, "A"],
+] as const
 scores.forEach(([score, expected]) =>
   Deno.test(`${score} -> ${expected}`, () =>
-    assertEquals(calcScore(score), expected)
-  )
+    assertEquals(calcScore(score), expected))
 )
 
 Deno.test(function resultTest() {
@@ -40,13 +50,15 @@ const guard = (a: number | string) =>
   ])
 
 Deno.test(function ifexprTest() {
-  for (const [a, expected] of [
-    ["first", "this is first"],
-    [0, "this is smaller than 1000"],
-    [2000, "this is bigger than 1000"],
-    [1000, "this is 1000"],
-    ["hello", "this is a string called hello"],
-  ] as const) {
+  for (
+    const [a, expected] of [
+      ["first", "this is first"],
+      [0, "this is smaller than 1000"],
+      [2000, "this is bigger than 1000"],
+      [1000, "this is 1000"],
+      ["hello", "this is a string called hello"],
+    ] as const
+  ) {
     assertEquals(guard(a), expected)
   }
 })
