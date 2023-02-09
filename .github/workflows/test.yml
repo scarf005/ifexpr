@@ -1,0 +1,38 @@
+name: Test
+
+on:
+  push: { branches: [main] }
+  pull_request:
+  workflow_dispatch:
+
+env:
+  DENO_DIR: .deno
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix: { os: [ubuntu-22.04, macos-12, windows-2022] }
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: denoland/setup-deno@v1.1.1
+        with: { deno-version: v1.x }
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.DENO_DIR }}
+          key: ${{ runner.os }}-${{ hashFiles('deno.lock')}}
+          restore-keys: ${{ runner.os }}-
+
+      - run: deno task fmt
+      - run: deno lint
+      - run: deno test --coverage=cov/
+
+      - name: Generate coverage report
+        if: matrix.os == 'ubuntu-22.04'
+        run: deno coverage --lcov cov > cov.lcov
+
+      - name: Upload coverage reports to Codecov
+        if: matrix.os == 'ubuntu-22.04'
+        uses: codecov/codecov-action@v3

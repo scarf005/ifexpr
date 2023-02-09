@@ -4,5 +4,15 @@
     "fmt:check": "deno task dprint check",
     "dprint": "deno run -A npm:dprint",
     "dev": "deno run --watch mod.ts"
+  },
+  "lint": {
+    "files": {
+      "exclude": [".deno/"]
+    }
+  },
+  "test": {
+    "files": {
+      "exclude": [".deno/"]
+    }
   }
 }
