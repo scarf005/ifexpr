@@ -1,18 +1,23 @@
 {
   "tasks": {
-    "fmt": "deno task dprint fmt",
-    "fmt:check": "deno task dprint check",
-    "dprint": "deno run -A npm:dprint",
     "dev": "deno run --watch mod.ts"
+  },
+  "fmt": {
+    "options": {
+      "semiColons": false
+    },
+    "files": {
+      "exclude": [".deno/", "cov/", "npm/"]
+    }
   },
   "lint": {
     "files": {
-      "exclude": [".deno/"]
+      "exclude": [".deno/", "cov/", "npm/"]
     }
   },
   "test": {
     "files": {
-      "exclude": [".deno/"]
+      "exclude": [".deno/", "cov/", "npm/"]
     }
   }
 }

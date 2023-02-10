@@ -25,7 +25,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('deno.lock')}}
           restore-keys: ${{ runner.os }}-
 
-      - run: deno task fmt
+      - run: deno fmt --check
       - run: deno lint
       - run: deno test --coverage=cov/
 

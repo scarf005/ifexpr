@@ -16,7 +16,6 @@ Deno.bench(function nativeIf() {
     guard(i)
   }
 })
-
 Deno.bench(function exprIf() {
   const guard = (a: number | "first") =>
     ifexpr(
