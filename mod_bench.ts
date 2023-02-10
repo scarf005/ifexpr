@@ -19,12 +19,12 @@ Deno.bench(function nativeIf() {
 
 Deno.bench(function exprIf() {
   const guard = (a: number | "first") =>
-    ifexpr([
+    ifexpr(
       [a === "first", "this is first"],
       [a > 1000, "this is bigger than 1000"],
       [a === 1000, "this is 1000"],
       "this is smaller than 1000",
-    ])
+    )
   for (let i = 0; i < 2000; i++) {
     guard(i)
   }

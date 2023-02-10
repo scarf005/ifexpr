@@ -29,17 +29,17 @@ const unwrap = <T>(result: Result<T>): T =>
  *
  * ```
  * const a: string | number = 'first'
- * const b = ifexpr([
+ * const b = ifexpr(
  *   [a < 10, () => "this is first"],
  *   [a > 1000, "this is bigger than 1000"],
  *   [a === 1000, "this is 1000"],
  *   "this is smaller than 1000",
- * ])
+ * )
  * b //=> "this is first"
  * ```
  */
 export const ifexpr = <T, Arr extends Branches<T>>(
-  args: readonly [...Arr, Result<T>],
+  ...args: readonly [...Arr, Result<T>]
 ): T => {
   const conds = args.slice(0, -1) as Arr
   const elseVal = args.at(-1) as Result<T>
