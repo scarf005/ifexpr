@@ -21,16 +21,16 @@ scores.map(calcScore).join(", ") // => A, B, C, D, F
 ## Benchmark
 
 ```sh
-deno bench
-Check file:///home/scarf/repo/ifexpr/main_bench.ts
-cpu: AMD Ryzen 7 4700U with Radeon Graphics
-runtime: deno 1.29.1 (x86_64-unknown-linux-gnu)
+$ deno bench
+Check file:///home/scarf/repo/ifexpr/mod_bench.ts
+cpu: AMD Ryzen 5 5600G with Radeon Graphics
+runtime: deno 1.30.0 (x86_64-unknown-linux-gnu)
 
-file:///home/scarf/repo/ifexpr/main_bench.ts
+file:///home/scarf/repo/ifexpr/mod_bench.ts
 benchmark      time (avg)             (min … max)       p75       p99      p995
 ------------------------------------------------- -----------------------------
-nativeIf     1.98 µs/iter     (1.63 µs … 2.19 µs)   2.05 µs   2.19 µs   2.19 µs
-exprIf     151.56 µs/iter (118.25 µs … 617.04 µs) 171.76 µs 201.46 µs  214.3 µs
+nativeIf     1.43 µs/iter     (1.36 µs … 1.93 µs)   1.39 µs   1.93 µs   1.93 µs
+exprIf     118.72 µs/iter  (86.88 µs … 356.44 µs) 142.18 µs 303.01 µs  316.7 µs
 ```
 
-disregard performance, embrace functional programming!
+consider using `ifexpr` only to non performance critical code.
