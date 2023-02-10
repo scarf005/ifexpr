@@ -6,13 +6,13 @@ type safe if expression for deno.
 
 ```ts
 const calcScore = (score: number) =>
-  ifexpr([
+  ifexpr(
     [() => score < 60, "F"],
     [() => score < 70, () => "D"],
     [score < 80, "C"],
     [score < 90, () => "B"],
     () => "A",
-  ])
+  )
 
 const scores = [90, 80, 70, 60, 50]
 scores.map(calcScore).join(", ") // => A, B, C, D, F
