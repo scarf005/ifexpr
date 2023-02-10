@@ -1,6 +1,6 @@
 import { ifexpr } from "./mod.ts"
 
-const tryGuard = (guard: (n: any) => any) => {
+const tryGuard = (guard: (n: number) => string) => {
   for (let i = 0; i < 3000; i++) {
     guard(i)
   }
