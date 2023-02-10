@@ -1,7 +1,4 @@
 {
-  "tasks": {
-    "dev": "deno run --watch mod.ts"
-  },
   "fmt": {
     "options": {
       "semiColons": false

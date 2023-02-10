@@ -5,6 +5,8 @@ type safe if expression for deno.
 ## How to use
 
 ```ts
+import { ifexpr } from "https://deno.land/x/ifexpr/mod.ts"
+
 const calcScore = (score: number) =>
   ifexpr(
     [() => score < 60, "F"],
@@ -34,3 +36,13 @@ exprIf     118.72 µs/iter  (86.88 µs … 356.44 µs) 142.18 µs 303.01 µs  31
 ```
 
 consider using `ifexpr` only to non performance critical code.
+
+## About
+
+### License
+
+`ifexpr` is released under the MIT License. see [LICENSE](LICENSE) for details.
+
+### Contributing
+
+see [CONTRIBUTING.md](CONTRIBUTING.md)
