@@ -1,5 +1,11 @@
 import { ifexpr } from "./mod.ts"
 
+const tryGuard = (guard: (n: any) => any) => {
+  for (let i = 0; i < 3000; i++) {
+    guard(i)
+  }
+}
+
 Deno.bench(function nativeIf() {
   const guard = (a: number | "first") => {
     if (a === "first") {
@@ -12,9 +18,7 @@ Deno.bench(function nativeIf() {
       return "this is smaller than 1500"
     }
   }
-  for (let i = 0; i < 3000; i++) {
-    guard(i)
-  }
+  tryGuard(guard)
 })
 Deno.bench(function exprIf() {
   const guard = (a: number | "first") =>
@@ -24,7 +28,5 @@ Deno.bench(function exprIf() {
       [a === 1500, "this is 1500"],
       "this is smaller than 1500",
     )
-  for (let i = 0; i < 3000; i++) {
-    guard(i)
-  }
+  tryGuard(guard)
 })
