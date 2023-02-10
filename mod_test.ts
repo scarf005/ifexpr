@@ -16,7 +16,7 @@ const calcScore = (score: number) =>
     () => "A",
   )
 
-// dprint-ignore
+// deno-fmt-ignore
 const scores = [
   [0, "F"], [59, "F"], [60, "D"], [69, "D"],
   [70, "C"], [79, "C"], [80, "B"], [89, "B"],
